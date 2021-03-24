@@ -7,6 +7,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  static String loadsheet;
   final TextEditingController regController = new TextEditingController();
   final TextEditingController flightController = new TextEditingController();
   final TextEditingController fromController = new TextEditingController();
@@ -95,13 +96,6 @@ class MyApp extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         finalloadsheetController.text = createLoadsheet();
-                        Clipboard.setData(ClipboardData(
-                            text: finalloadsheetController.text.toString()));
-                        AlertDialog(
-                          title: Text('Loadsheet'),
-                          content: Text(
-                              'Your loadsheet has been copied to the clipboard, paste it into a document for printing'),
-                        );
                       },
                       child: Text('Create Loadsheet'),
                     ),
