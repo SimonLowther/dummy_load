@@ -28,10 +28,16 @@ class _LoadsheetState extends State<Loadsheet> {
                     onPressed: () {
                       Clipboard.setData(
                           new ClipboardData(text: MyApp.loadsheet));
+                      Alerts.singleAlert(context, 'Copied',
+                          'Your loadsheet has been copied to the clipboard. \n You can now paste it into any app.');
                     },
                     child: Text('  Copy to \n Clipboard')),
                 ElevatedButton(
-                    onPressed: () {}, child: Text('Print Loadsheet')),
+                    onPressed: () {
+                      Alerts.singleAlert(context, 'Almost there...',
+                          'This function is currently being implemented \n and will be available soon. \n\n In the meantime use the Copy to Clipboard \n function and print from any other app');
+                    },
+                    child: Text('Print Loadsheet')),
               ],
             ),
             Padding(
@@ -45,4 +51,23 @@ class _LoadsheetState extends State<Loadsheet> {
   }
 }
 
-class Alerts {}
+class Alerts {
+  static Widget singleAlert(
+      BuildContext context, String title, String message) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(title),
+            content: Text(message),
+            actions: <Widget>[
+              TextButton(
+                  onPressed: () {
+                    Navigator.of(context, rootNavigator: true).pop();
+                  },
+                  child: Text('Close'))
+            ],
+          );
+        });
+  }
+}
