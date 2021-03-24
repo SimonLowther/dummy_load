@@ -9,6 +9,19 @@ void main() {
 
 class MyApp extends StatelessWidget {
   static String loadsheet;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'Dummy Loadsheet',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: InputPage());
+  }
+}
+
+class InputPage extends StatelessWidget {
   final TextEditingController regController = new TextEditingController();
   final TextEditingController flightController = new TextEditingController();
   final TextEditingController fromController = new TextEditingController();
@@ -23,95 +36,87 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Dummy Loadsheet',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Dummy LoadSheet'),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Dummy LoadSheet'),
-        ),
-        body: Container(
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Container(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    TextField(
-                      controller: regController,
-                      decoration: new InputDecoration(
-                          hintText: "Aircraft Reg", labelText: 'Registration'),
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Container(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  TextField(
+                    controller: regController,
+                    decoration: new InputDecoration(
+                        hintText: "Aircraft Reg", labelText: 'Registration'),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Aircraft Type:  '),
+                      TypeDropDown(),
+                    ],
+                  ),
+                  TextField(
+                    controller: flightController,
+                    decoration: new InputDecoration(
+                        hintText: "Flight Number", labelText: 'Flight Number'),
+                  ),
+                  TextField(
+                    controller: fromController,
+                    decoration: new InputDecoration(
+                        hintText: "From", labelText: 'From (XXX)'),
+                  ),
+                  TextField(
+                    controller: toController,
+                    decoration: new InputDecoration(
+                        hintText: "To", labelText: 'To (XXX)'),
+                  ),
+                  TextField(
+                    controller: zfwController,
+                    decoration: new InputDecoration(
+                        hintText: "ZFW", labelText: 'Zero Fuel Weight (kilos)'),
+                  ),
+                  TextField(
+                    controller: fuelController,
+                    decoration: new InputDecoration(
+                        hintText: "Fuel", labelText: 'Total Fuel'),
+                  ),
+                  TextField(
+                    controller: burnController,
+                    decoration: new InputDecoration(
+                        hintText: "Burn", labelText: 'Fuel Burn'),
+                  ),
+                  TextField(
+                    controller: indexController,
+                    decoration: new InputDecoration(
+                        hintText: 'Not yet implemented', labelText: 'ZFWMAC'),
+                  ),
+                  TextField(
+                    controller: pobController,
+                    decoration:
+                        new InputDecoration(hintText: "POB", labelText: 'PAX'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      finalloadsheetController.text = createLoadsheet();
+                      MyApp.loadsheet =
+                          finalloadsheetController.text.toString();
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Loadsheet()));
+                    },
+                    child: Text('Create Loadsheet'),
+                  ),
+                  Container(
+                    child: TextField(
+                      controller: finalloadsheetController,
+                      decoration: null,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Aircraft Type:  '),
-                        TypeDropDown(),
-                      ],
-                    ),
-                    TextField(
-                      controller: flightController,
-                      decoration: new InputDecoration(
-                          hintText: "Flight Number",
-                          labelText: 'Flight Number'),
-                    ),
-                    TextField(
-                      controller: fromController,
-                      decoration: new InputDecoration(
-                          hintText: "From", labelText: 'From (XXX)'),
-                    ),
-                    TextField(
-                      controller: toController,
-                      decoration: new InputDecoration(
-                          hintText: "To", labelText: 'To (XXX)'),
-                    ),
-                    TextField(
-                      controller: zfwController,
-                      decoration: new InputDecoration(
-                          hintText: "ZFW",
-                          labelText: 'Zero Fuel Weight (kilos)'),
-                    ),
-                    TextField(
-                      controller: fuelController,
-                      decoration: new InputDecoration(
-                          hintText: "Fuel", labelText: 'Total Fuel'),
-                    ),
-                    TextField(
-                      controller: burnController,
-                      decoration: new InputDecoration(
-                          hintText: "Burn", labelText: 'Fuel Burn'),
-                    ),
-                    TextField(
-                      controller: indexController,
-                      decoration: new InputDecoration(
-                          hintText: 'Not yet implemented', labelText: 'ZFWMAC'),
-                    ),
-                    TextField(
-                      controller: pobController,
-                      decoration: new InputDecoration(
-                          hintText: "POB", labelText: 'PAX'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        finalloadsheetController.text = createLoadsheet();
-                        loadsheet = finalloadsheetController.text.toString();
-                        Navigator.of(context, rootNavigator: true).push(
-                            MaterialPageRoute(
-                                builder: (context) => Loadsheet()));
-                      },
-                      child: Text('Create Loadsheet'),
-                    ),
-                    Container(
-                      child: TextField(
-                        controller: finalloadsheetController,
-                        decoration: null,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

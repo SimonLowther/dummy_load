@@ -8,6 +8,17 @@ class Loadsheet extends StatefulWidget {
 class _LoadsheetState extends State<Loadsheet> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context, rootNavigator: true).pop();
+            },
+            child: Text('Modify Load'),
+          ),
+        ],
+      ),
+    );
   }
 }
