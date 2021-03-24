@@ -1,5 +1,6 @@
 import 'package:dummy_load/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Loadsheet extends StatefulWidget {
   @override
@@ -24,7 +25,11 @@ class _LoadsheetState extends State<Loadsheet> {
                   child: Text('Modify Load'),
                 ),
                 ElevatedButton(
-                    onPressed: () {}, child: Text('  Copy to \n Clipboard')),
+                    onPressed: () {
+                      Clipboard.setData(
+                          new ClipboardData(text: MyApp.loadsheet));
+                    },
+                    child: Text('  Copy to \n Clipboard')),
                 ElevatedButton(
                     onPressed: () {}, child: Text('Print Loadsheet')),
               ],
