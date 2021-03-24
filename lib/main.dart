@@ -1,3 +1,4 @@
+import 'package:dummy_load/loadsheet.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/services.dart';
@@ -96,6 +97,10 @@ class MyApp extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         finalloadsheetController.text = createLoadsheet();
+                        loadsheet = finalloadsheetController.text.toString();
+                        Navigator.of(context, rootNavigator: true).push(
+                            MaterialPageRoute(
+                                builder: (context) => Loadsheet()));
                       },
                       child: Text('Create Loadsheet'),
                     ),
