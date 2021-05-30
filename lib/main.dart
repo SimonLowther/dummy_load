@@ -50,7 +50,8 @@ class InputPage extends StatelessWidget {
                   TextField(
                     controller: regController,
                     decoration: new InputDecoration(
-                        hintText: "Aircraft Reg", labelText: 'Registration'),
+                        hintText: "Aircraft Reg ie OXA",
+                        labelText: 'Registration'),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -62,7 +63,8 @@ class InputPage extends StatelessWidget {
                   TextField(
                     controller: flightController,
                     decoration: new InputDecoration(
-                        hintText: "Flight Number", labelText: 'Flight Number'),
+                        hintText: "Flight Number ie NZ123",
+                        labelText: 'Flight Number'),
                   ),
                   TextField(
                     controller: fromController,
