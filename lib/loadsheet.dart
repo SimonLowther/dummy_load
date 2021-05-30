@@ -52,6 +52,7 @@ class _LoadsheetState extends State<Loadsheet> {
 }
 
 class Alerts {
+  // ignore: missing_return
   static Widget singleAlert(
       BuildContext context, String title, String message) {
     showDialog(
