@@ -45,7 +45,6 @@ class InputPage extends StatelessWidget {
           padding: const EdgeInsets.all(24.0),
           child: Container(
             child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
               child: Column(
                 children: [
                   TextField(
