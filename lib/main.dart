@@ -51,7 +51,7 @@ class InputPage extends StatelessWidget {
                   TextField(
                     controller: regController,
                     decoration: new InputDecoration(
-                        hintText: "Aircraft Reg ie OXA",
+                        hintText: "Aircraft Reg ie N12345 or ZK-ABC",
                         labelText: 'Registration'),
                   ),
                   Row(
@@ -64,7 +64,7 @@ class InputPage extends StatelessWidget {
                   TextField(
                     controller: flightController,
                     decoration: new InputDecoration(
-                        hintText: "Flight Number ie NZ123",
+                        hintText: "Flight Number ie QN123",
                         labelText: 'Flight Number'),
                   ),
                   TextField(
@@ -168,7 +168,7 @@ class InputPage extends StatelessWidget {
     loadSheetBuffer.writeln(fromController.text.toUpperCase() +
         ' ' +
         toController.text.toUpperCase() +
-        ' ZK-' +
+        ' ' +
         regController.text.toUpperCase() +
         ' 2/4');
     loadSheetBuffer
